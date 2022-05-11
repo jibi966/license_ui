@@ -1,38 +1,19 @@
 import React, { useEffect, useState } from "react";
 import {
   ChakraProvider,
-  Image,
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
   TableCaption,
   TableContainer,
-  Box,
-  Flex,
-  Button,
-  ButtonGroup,
-  Heading,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Spacer,
 } from "@chakra-ui/react";
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  StarIcon,
-  ChevronDownIcon,
-  WarningIcon,
-  NotAllowedIcon,
-  CheckCircleIcon,
-} from "@chakra-ui/icons";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function HomeTable() {
+  const navigate = useNavigate();
   const [licenseData, setLicenseData] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:8080/license").then((res) => {
@@ -55,7 +36,7 @@ function HomeTable() {
             {licenseData &&
               licenseData.map((e) => {
                 return (
-                  <Tr>
+                  <Tr onClick={() => navigate(`/card/${e.id}`)}>
                     <Td>{e.id}</Td>
                     <Td>{e.name} </Td>
                     <Td>{e.keywords.join(" , ")}</Td>
