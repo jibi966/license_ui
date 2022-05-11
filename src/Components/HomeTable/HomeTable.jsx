@@ -51,3 +51,12 @@ function HomeTable() {
 }
 
 export default HomeTable;
+
+// // Custom useRef
+
+// const { useState } = require("react");
+
+// function useRef(initialValue) {
+//   const [ref, unUsed] = useState({ current: initialValue });
+//   return ref;
+// }
